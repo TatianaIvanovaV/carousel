@@ -18,33 +18,33 @@ class SliderCarousel{
     this.next = document.querySelector(next);
     this.prev = document.querySelector(prev);
     this.slidesToShow = slidesToShow;
-    this.dots = document.querySelector(dots);
+    //this.dots = document.querySelector(dots);
     this.options = {
+      dots,
       position,
       infinity,
       margin,
       widthSlide: Math.floor(100 / this.slidesToShow),
-      maxPosition: this.items.length - this.slidesToShow,
+      maxPosition: this.items.length - 1,
     }; 
     this.responsive = responsive;
   }
   init(){
     this.addClass();
     this.addStyle();
+    this.addDots();
     
     if (this.prev && this.next) {
-      
       this.controlSlider();
     } else {
-      this.addDots();
+      
       this.addArrow();
       this.controlSlider();
     }
-
-    
-
     if ( this.responsive ) {
-    this.responsiveInit()}
+      this.responsiveInit();
+      this.addDots();
+    }
   }
 
   addClass() {
@@ -121,10 +121,15 @@ class SliderCarousel{
     this.main.appendChild(this.next);
   }
   addDots() {
-    if (this.dots) {
+    if (this.options.dots) {
       this.dots = document.createElement('div');
-      this.dots.className = 'carousel-dots';
+      this.dots.className = 'slider__dots';
       this.main.appendChild(this.dots);
+      this.dotsNav();
+    }
+  }
+  dotsNav() {
+    if (this.dots) {
       this.dotArray = [];
       for (let i = 0; i < this.items.length; i++) {
         const dot = document.createElement("span");
@@ -143,9 +148,8 @@ class SliderCarousel{
           this.currentSlide(this.options.position);
         });
       });
-    }
-    
-  } 
+    }  
+  }
 
   currentSlide(index) {
     this.wrap.style.transform = `translateX(-${
@@ -162,7 +166,7 @@ class SliderCarousel{
   }
 
   responsiveInit() {
-    const slidesToShowDefault = this.slidesToShow; 
+    const slidesToShowDefault = this.slidesToShow;
     const allResponse = this.responsive.map(item => item.breakpoint);
     const maxResponse = Math.max(...allResponse);
 
@@ -173,19 +177,24 @@ class SliderCarousel{
         for (let i = 0; i < allResponse.length; i++) {
           if (widthWindow < allResponse[i]) {
             this.slidesToShow = this.responsive[i].slidesToShow;
+            this.options.dots = this.responsive[i].dots;
             this.options.widthSlide = Math.floor(100 / this.slidesToShow);
             this.addStyle();
           } 
         }
       } else {
         this.slidesToShow = slidesToShowDefault;
+        this.options.dots = false;
         this.options.widthSlide = Math.floor(100 / this.slidesToShow);
         this.addStyle();
+        //this.addDots();
       }
     };
     checkResponse();
+    //this.addDots();
 
-    window.addEventListener('resize', checkResponse)
+    window.addEventListener('resize', checkResponse);
+   
   }
 }
 export default SliderCarousel;

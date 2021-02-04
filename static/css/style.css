@@ -97,9 +97,7 @@ h1 {
   transform: rotate(-45deg);
 }
 
-.carousel-dots {
-  
-  transform: translateX(-50%);
+.slider__dots {
   display: flex;
   align-items: center;
 }
@@ -123,7 +121,7 @@ h1 {
 
 
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 600px) {
   h1 {
     font-size: 24px;
   }
