@@ -32,18 +32,15 @@ class SliderCarousel{
   init(){
     this.addClass();
     this.addStyle();
-    this.addDots();
     
     if (this.prev && this.next) {
       this.controlSlider();
     } else {
-      
       this.addArrow();
       this.controlSlider();
     }
     if ( this.responsive ) {
       this.responsiveInit();
-      this.addDots();
     }
   }
 
@@ -126,10 +123,11 @@ class SliderCarousel{
       this.dots.className = 'slider__dots';
       this.main.appendChild(this.dots);
       this.dotsNav();
+    } else {
+      this.dots.remove(this.options.dots)
     }
   }
   dotsNav() {
-    if (this.dots) {
       this.dotArray = [];
       for (let i = 0; i < this.items.length; i++) {
         const dot = document.createElement("span");
@@ -148,7 +146,7 @@ class SliderCarousel{
           this.currentSlide(this.options.position);
         });
       });
-    }  
+    
   }
 
   currentSlide(index) {
@@ -170,6 +168,7 @@ class SliderCarousel{
     const allResponse = this.responsive.map(item => item.breakpoint);
     const maxResponse = Math.max(...allResponse);
 
+
     const checkResponse = () => {
       const widthWindow = document.documentElement.clientWidth;
 
@@ -177,7 +176,11 @@ class SliderCarousel{
         for (let i = 0; i < allResponse.length; i++) {
           if (widthWindow < allResponse[i]) {
             this.slidesToShow = this.responsive[i].slidesToShow;
-            this.options.dots = this.responsive[i].dots;
+            if (this.options.dots != this.responsive[i].dots) {
+              this.options.dots = this.responsive[i].dots;
+              this.addDots()
+            }
+            
             this.options.widthSlide = Math.floor(100 / this.slidesToShow);
             this.addStyle();
           } 
@@ -187,12 +190,10 @@ class SliderCarousel{
         this.options.dots = false;
         this.options.widthSlide = Math.floor(100 / this.slidesToShow);
         this.addStyle();
-        //this.addDots();
       }
     };
     checkResponse();
-    //this.addDots();
-
+    
     window.addEventListener('resize', checkResponse);
    
   }

@@ -16,7 +16,7 @@ const opotions = {
       {
         breakpoint: 300,
         slidesToShow: 1,
-        dots: true,
+        dots: false,
       },
   ]    
 }
