@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
   overflow-x:hidden;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 *,
@@ -14,25 +14,26 @@ body {
   font-family: 'FuturaPT-Light';
   font-style: normal;
   font-weight: 300;
-  line-height: 30px;
+  line-height: 24px;
   background: #ffffff;
   color: #575757;
+  margin: 0;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'FuturaPT-Bold';
-  font-weight: 900;
+  font-weight: 800;
   color: #9b8b68;
 }
 h1 {
-  font-size: 48px;
+  font-size: 50px;
   line-height: 100%;
   margin: 0; 
 }
-
 .container {
+  max-width: 1760px;
   padding: 0px; 
-  max-width: 1200px;
   margin: 0 auto; 
+  border: 1px solid red;
 }
 .portfolio__title {
   display: -webkit-box;
@@ -42,6 +43,10 @@ h1 {
   justify-content: space-between;
   -webkit--moz-box-pack: space-between;
   box-pack: space-between;
+  margin-bottom: 38px;
+}
+.portfolio__title span {
+  margin-top: 23px;
 }
 .portfolio__title span a {
   font-size: 18px;
@@ -49,17 +54,40 @@ h1 {
   color: #9b8b68;
   text-decoration: none; 
   text-transform: uppercase;
+  margin-right: 15px;
 }
 .portfolio__title span a::after {
   content: "\f061";
   font-family: "FontAwesome";
   font-weight: 300;
   position: relative;
-  left: 8px;
+  left: 12px;
 }
-.slider .slider__item img {
+.portfolio__slider {
+  margin: 0 0 40px;
+}
+.slider__list {
+  margin: 0 -20px;
+}
+.slider__content {
+  padding: 0 20px;
+}
+.slider__item img {
   width: 100%;
-  height: auto;
+  max-height: 540px;
+}
+.slider__about {
+  margin-top: 15px;
+}
+.slider__item h2 {
+  font-size: 32px;
+  line-height: 32px;
+  margin: 0 0 20px;
+}
+.slider__item p {
+  font-size: 20px;
+  line-height: 30px;
+  margin: 0;
 }
 .carousel-wrap {
   overflow: hidden !important;
@@ -96,39 +124,131 @@ h1 {
   border-bottom: 2px solid #A89365;
   transform: rotate(-45deg);
 }
-
-.slider__dots {
+.carousel__dots {
   display: flex;
+  justify-content: center;
   align-items: center;
+  padding: 20px 0 ;
 }
-
-.carousel-dot {
+.carousel__dot {
   width: 12px;
   height: 12px;
   background-color:#F2F2F2;
   border-radius: 100%;
-  margin-right: 10px;
+  margin-right: 20px;
   cursor: pointer;
 }
-
-.carousel-dot:last-child {
-  margin-right: 0;
+.carousel__dot:last-child {
+  margin-right: 0px;
 }
-
-.carousel-dot_active {
+.carousel__dot_active {
   background-color: #A89365;
 }
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+.button__order {
+  width: 360px;
+  height: 60px;
+  font-size: 16px;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: #A89365; 
+  border: 1px solid #A89365;
+  background: #FFFFFF;
+  padding: 0;
+  margin: 0 20px;
+  cursor: pointer;
+}
+.button__order_fill {
+  background: #A89365;
+  color: #FFFFFF;
+}
 
-
+@media screen and (max-width: 1280px) {
+  h1 {
+    font-size: 33px;
+  }
+  .portfolio__title span {
+    margin-top: 8px;
+  }
+  .container { 
+    max-width: 1200px;
+  }
+  
+  .slider__item h2 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  .slider__item p {
+    font-size: 13.5px;
+    line-height: 24px;
+  }
+  .button__order {
+    width: 300px;
+    height: 45px;
+  }
+}
 
 @media screen and (max-width: 600px) {
-  h1 {
-    font-size: 24px;
+  .container { 
+    max-width: 560px;
   }
+  .portfolio__title {
+    margin-bottom: 18px;
+  }
+  .portfolio__slider {
+    margin: 0px;
+  }
+  .slider__item h2 {
+    margin: 0 0 10px;
+  }
+  .slider__content {
+    padding: 0 10px;
+  }
+  .slider__list {
+    margin: 0 -10px;
+  }
+  .slider__item img {
+    max-height: 360px;
+  }
+  .slider__about {
+    margin-top: 5px;
+  }
+  .slider__about p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  .button__order {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
   .portfolio__title {
     -webkit-box-orient: vertical; 
     -webkit-box-direction: normal;
     -ms-flex-direction: column; 
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container { 
+    max-width: 300px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  .slider__content {
+    padding: 0px;
+  }
+  .slider__list {
+    margin: 0px;
   }
 }

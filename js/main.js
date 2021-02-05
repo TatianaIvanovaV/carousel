@@ -10,19 +10,19 @@ const opotions = {
   infinity: true,
   responsive: [
     {
-      breakpoint: 1280,
+      breakpoint: 1281,
       slidesToShow: 4,
       arrows: true,
       dots: false,
     },
       {
-        breakpoint: 600,
+        breakpoint: 601,
         slidesToShow: 2,
         arrows: false,
         dots: true,
       },
       {
-        breakpoint: 300,
+        breakpoint: 321,
         slidesToShow: 1,
         arrows: false,
         dots: true,

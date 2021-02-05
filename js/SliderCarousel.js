@@ -3,10 +3,7 @@ class SliderCarousel{
   constructor({ 
     main, 
     wrap, 
-    //next, 
-    //prev,
     arrows = true,
-    margin = 20,
     infinity = false,
     dots = false,
     position = 0, 
@@ -16,17 +13,13 @@ class SliderCarousel{
     this.main = document.querySelector(main);
     this.wrap = document.querySelector(wrap);
     this.items = document.querySelector(wrap).children;
-    //this.next = document.querySelector(next);
-    //this.prev = document.querySelector(prev);
     this.slidesToShow = slidesToShow;
-    //this.dots = document.querySelector(dots);
     this.options = {
       arrows,
       dots,
       position,
       infinity,
-      margin,
-      widthSlide: Math.floor(100 / this.slidesToShow),
+      widthSlide: Math.floor(100 / this.slidesToShow), 
       maxPosition: this.items.length - 1,
     }; 
     this.responsive = responsive;
@@ -46,6 +39,12 @@ class SliderCarousel{
     }
   }
 
+/*----------------------------------swipe------------------------------------------*/
+
+
+/*---------------------------------------------------------------------------------*/
+
+
   addClass() {
     this.main.classList.add('carousel-wrap');
     this.wrap.classList.add('carousel-list');
@@ -57,12 +56,12 @@ class SliderCarousel{
     const style = document.createElement('style');
     style.id = 'carousel-style';
     style.textContent = `
-      .carousel-wrap {
-        
+      .slider__wrap {
+        padding: 0 ${this.options.padding}px;
       }
       .carousel-children {
         flex: 0 0 ${this.options.widthSlide}% !important;
-        /*mardin: 0 -${this.options.margin}px;*/
+        
       } 
     `
     document.head.appendChild(style);
@@ -128,7 +127,7 @@ class SliderCarousel{
   addDots() {
     if (this.options.dots) {
       this.dots = document.createElement('div');
-      this.dots.className = 'slider__dots';
+      this.dots.className = 'carousel__dots';
       this.main.appendChild(this.dots);
       this.dotsNav();
     } else {
@@ -140,10 +139,10 @@ class SliderCarousel{
       this.dotArray = [];
       for (let i = 0; i < this.items.length; i++) {
         const dot = document.createElement("span");
-        dot.classList.add("carousel-dot");
+        dot.classList.add("carousel__dot");
         this.dots.appendChild(dot);
         if (i == 0) {
-          dot.className += " carousel-dot_active";
+          dot.className += " carousel__dot_active";
         }
         this.dotArray.push(dot);
       }
@@ -167,9 +166,9 @@ class SliderCarousel{
 
   currentDot(index) {
     for (let dot of this.dotArray) {
-      dot.classList.remove("carousel-dot_active");
+      dot.classList.remove("carousel__dot_active");
     }
-    this.dotArray[index].classList.add("carousel-dot_active");
+    this.dotArray[index].classList.add("carousel__dot_active");
   }
 
   responsiveInit() {
