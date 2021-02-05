@@ -3,8 +3,9 @@ class SliderCarousel{
   constructor({ 
     main, 
     wrap, 
-    next, 
-    prev,
+    //next, 
+    //prev,
+    arrows = true,
     margin = 20,
     infinity = false,
     dots = false,
@@ -15,11 +16,12 @@ class SliderCarousel{
     this.main = document.querySelector(main);
     this.wrap = document.querySelector(wrap);
     this.items = document.querySelector(wrap).children;
-    this.next = document.querySelector(next);
-    this.prev = document.querySelector(prev);
+    //this.next = document.querySelector(next);
+    //this.prev = document.querySelector(prev);
     this.slidesToShow = slidesToShow;
     //this.dots = document.querySelector(dots);
     this.options = {
+      arrows,
       dots,
       position,
       infinity,
@@ -108,14 +110,20 @@ class SliderCarousel{
     }
   }
   addArrow() {
-    this.next = document.createElement('div');
-    this.prev = document.createElement('div');
+    if (this.options.arrows) {
+      this.next = document.createElement('div');
+      this.prev = document.createElement('div');
 
-    this.next.className = 'carousel-button__next';
-    this.prev.className = 'carousel-button__prev';
+      this.next.className = 'carousel-button__next';
+      this.prev.className = 'carousel-button__prev';
 
-    this.main.appendChild(this.prev);
-    this.main.appendChild(this.next);
+      this.main.appendChild(this.prev);
+      this.main.appendChild(this.next);
+      this.controlSlider();
+    } else {
+      this.next.remove(this.next);
+      this.prev.remove(this.prev);
+    }
   }
   addDots() {
     if (this.options.dots) {
@@ -124,7 +132,8 @@ class SliderCarousel{
       this.main.appendChild(this.dots);
       this.dotsNav();
     } else {
-      this.dots.remove(this.options.dots)
+      this.dots.remove(this.dots)
+      //this.dots.parentElement.removeChild(this.dots)
     }
   }
   dotsNav() {
@@ -180,14 +189,20 @@ class SliderCarousel{
               this.options.dots = this.responsive[i].dots;
               this.addDots()
             }
+            if (this.options.arrows != this.responsive[i].arrows) {
+              this.options.arrows = this.responsive[i].arrows;
+              this.addArrow();
+            }
             
             this.options.widthSlide = Math.floor(100 / this.slidesToShow);
             this.addStyle();
+            
           } 
         }
       } else {
         this.slidesToShow = slidesToShowDefault;
         this.options.dots = false;
+        this.options.arrows = false;
         this.options.widthSlide = Math.floor(100 / this.slidesToShow);
         this.addStyle();
       }
