@@ -10,23 +10,29 @@ const opotions = {
   infinity: true,
   responsive: [
     {
-      breakpoint: 1281,
+      breakpoint: 1201,
       slidesToShow: 4,
       arrows: true,
       dots: false,
     },
-      {
-        breakpoint: 601,
-        slidesToShow: 2,
-        arrows: false,
-        dots: true,
-      },
-      {
-        breakpoint: 321,
-        slidesToShow: 1,
-        arrows: false,
-        dots: true,
-      },
+    {
+      breakpoint: 993,
+      slidesToShow: 3,
+      arrows: true,
+      dots: false,
+    },
+    {
+      breakpoint: 769,
+      slidesToShow: 2,
+      arrows: false,
+      dots: true,
+    },
+    {
+      breakpoint: 480,
+      slidesToShow: 1,
+      arrows: false,
+      dots: true,
+    },
   ]    
 }
 

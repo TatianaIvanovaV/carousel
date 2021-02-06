@@ -34,6 +34,9 @@ h1 {
   line-height: 48px;
   margin: 0; 
 }
+.portfolio {
+  padding: 40px 0 50px;
+}
 .font-medium {
   font-family: "FuturaPT-Medium";
   font-size: 18px;
@@ -43,8 +46,8 @@ h1 {
   text-transform: uppercase;
 }
 .container {
-  max-width: 1760px;
-  padding: 0px; 
+  max-width: 1920px;
+  padding: 0 80px; 
   margin: 0 auto; 
 }
 .portfolio__title {
@@ -106,7 +109,6 @@ h1 {
   transition: transform .5s !important;
   will-change: transform !important;
   box-sizing: initial !important;
-  overflow: visible;
 }
 .carousel-button__next, 
 .carousel-button__prev {
@@ -115,19 +117,17 @@ h1 {
   width: 16px;
   height: 16px;
   cursor: pointer;
-  overflow: visible;
   background-color: red;
-  z-index: 99 ;
 }
 .carousel-button__prev {
-  left: 32px;
+  left: -32px;
   border-left: 2px solid #A89365;
   border-bottom: 2px solid #A89365;
   transform: rotate(45deg);
 
 }
 .carousel-button__next {
-  right: 32px;
+  right: -32px;
   border-right: 2px solid #A89365;
   border-bottom: 2px solid #A89365;
   transform: rotate(-45deg);
@@ -179,7 +179,8 @@ h1 {
     margin-top: 8px;
   }
   .container { 
-    max-width: 1200px;
+    max-width: 1280px;
+    padding: 0 40px;
   }
   
   .slider__item h2 {
@@ -196,9 +197,24 @@ h1 {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .container { 
-    max-width: 560px;
+    max-width: 768px;
+    padding: 0 30px;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  .button__order {
+    width: 65%;
+    margin: 0 auto 20px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container { 
+    max-width: 600px;
+    padding: 0 20px;
   }
   .portfolio__title {
     margin-bottom: 18px;
@@ -216,17 +232,15 @@ h1 {
     margin: 0 -10px;
   }
   .slider__item img {
-    max-height: 360px;
+    width: 100%;
+    /*max-height: 360px;*/
+    height: auto;
   }
   .slider__about {
     margin-top: 5px;
   }
-  .buttons {
-    flex-direction: column;
-  }
   .button__order {
     width: 100%;
-    margin: 0 0 20px;
   }
 }
 
@@ -237,15 +251,17 @@ h1 {
     -ms-flex-direction: column; 
     flex-direction: column;
   }
+  h1 {
+    font-family: 'FuturaPT-Bold';
+    font-size: 24px;
+    line-height: 24px;
+  }
 }
 
 @media screen and (max-width: 320px) {
   .container { 
-    max-width: 300px;
-  }
-  h1 {
-    font-family: 'FuturaPT-Bold';
-    font-size: 24px;
+    max-width: 320px;
+    padding: 0 10px;
   }
   .slider__content {
     padding: 0px;

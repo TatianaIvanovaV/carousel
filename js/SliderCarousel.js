@@ -56,9 +56,6 @@ class SliderCarousel{
     const style = document.createElement('style');
     style.id = 'carousel-style';
     style.textContent = `
-      .slider__wrap {
-        padding: 0 ${this.options.padding}px;
-      }
       .carousel-children {
         flex: 0 0 ${this.options.widthSlide}% !important;
         
