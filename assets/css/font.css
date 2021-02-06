@@ -1,0 +1,37 @@
+@font-face { 
+  font-family: "FuturaPT-Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/FuturaPT-Medium.eot");
+  src: url("../font/FuturaPT-Medium.eot?#iefix")format("embedded-opentype"),
+        url("../font/FuturaPT-Medium.woff") format("woff"),
+        url("../font/FuturaPT-Medium.ttf") format("truetype");
+}
+@font-face { 
+  font-family: "FuturaPT-Book";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/FuturaPT-Book.eot");
+  src: url("../font/FuturaPT-Book.eot?#iefix")format("embedded-opentype"),
+        url("../font/FuturaPT-Book.woff") format("woff"),
+        url("../font/FuturaPT-Book.ttf") format("truetype");
+}
+
+@font-face { 
+  font-family: "FuturaPT-Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/FuturaPT-Bold.eot");
+  src: url("../font/FuturaPT-Bold.eot?#iefix")format("embedded-opentype"),
+        url("../font/FuturaPT-Bold.woff") format("woff"),
+        url("../font/FuturaPT-Bold.ttf") format("truetype");
+}
+@font-face { 
+  font-family: "FuturaPT-ExtraBold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/FuturaPT-ExtraBold.eot");
+  src: url("../font/FuturaPT-ExtraBold.eot?#iefix")format("embedded-opentype"),
+        url("../font/FuturaPT-ExtraBold.woff") format("woff"),
+        url("../font/FuturaPT-ExtraBold.ttf") format("truetype");
+}

@@ -8,10 +8,15 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+  outline: none;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0
 }
 
 body {
-  font-family: 'FuturaPT-Light';
+  font-family: "FuturaPT-Book";
   font-style: normal;
   font-weight: 300;
   line-height: 24px;
@@ -20,20 +25,27 @@ body {
   margin: 0;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'FuturaPT-Bold';
   font-weight: 800;
   color: #9b8b68;
 }
 h1 {
-  font-size: 50px;
-  line-height: 100%;
+  font-family: 'FuturaPT-ExtraBold';
+  font-size: 48px;
+  line-height: 48px;
   margin: 0; 
+}
+.font-medium {
+  font-family: "FuturaPT-Medium";
+  font-size: 18px;
+  line-height: 23px;
+  color: #A89365;
+  text-decoration: none; 
+  text-transform: uppercase;
 }
 .container {
   max-width: 1760px;
   padding: 0px; 
   margin: 0 auto; 
-  border: 1px solid red;
 }
 .portfolio__title {
   display: -webkit-box;
@@ -48,20 +60,15 @@ h1 {
 .portfolio__title span {
   margin-top: 23px;
 }
-.portfolio__title span a {
-  font-size: 18px;
-  line-height: 23px;
-  color: #9b8b68;
-  text-decoration: none; 
-  text-transform: uppercase;
+.portfolio__link {
   margin-right: 15px;
 }
-.portfolio__title span a::after {
+.portfolio__link::after {
   content: "\f061";
   font-family: "FontAwesome";
   font-weight: 300;
   position: relative;
-  left: 12px;
+  left: 10px;
 }
 .portfolio__slider {
   margin: 0 0 40px;
@@ -80,11 +87,12 @@ h1 {
   margin-top: 15px;
 }
 .slider__item h2 {
+  font-family: 'FuturaPT-Bold';
   font-size: 32px;
   line-height: 32px;
   margin: 0 0 20px;
 }
-.slider__item p {
+.slider__about p {
   font-size: 20px;
   line-height: 30px;
   margin: 0;
@@ -151,14 +159,10 @@ h1 {
 .button__order {
   width: 360px;
   height: 60px;
-  font-size: 16px;
-  line-height: 23px;
-  text-transform: uppercase;
-  color: #A89365; 
   border: 1px solid #A89365;
   background: #FFFFFF;
-  padding: 0;
   margin: 0 20px;
+  padding: 8px 12px;
   cursor: pointer;
 }
 .button__order_fill {
@@ -168,7 +172,8 @@ h1 {
 
 @media screen and (max-width: 1280px) {
   h1 {
-    font-size: 33px;
+    font-size: 32px;
+    line-height: 32px;
   }
   .portfolio__title span {
     margin-top: 8px;
@@ -181,8 +186,8 @@ h1 {
     font-size: 24px;
     line-height: 24px;
   }
-  .slider__item p {
-    font-size: 13.5px;
+  .slider__about p {
+    font-size: 16px;
     line-height: 24px;
   }
   .button__order {
@@ -216,10 +221,6 @@ h1 {
   .slider__about {
     margin-top: 5px;
   }
-  .slider__about p {
-    font-size: 16px;
-    line-height: 24px;
-  }
   .buttons {
     flex-direction: column;
   }
@@ -243,6 +244,7 @@ h1 {
     max-width: 300px;
   }
   h1 {
+    font-family: 'FuturaPT-Bold';
     font-size: 24px;
   }
   .slider__content {
