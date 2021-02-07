@@ -13,14 +13,14 @@ class SliderCarousel{
     this.main = document.querySelector(main);
     this.wrap = document.querySelector(wrap);
     this.items = document.querySelector(wrap).children;
-    this.slidesToShow = slidesToShow;
     this.options = {
       arrows,
       dots,
       position,
+      slidesToShow,
       infinity,
       widthSlide: Math.floor(100 / this.slidesToShow), 
-      maxPosition: this.items.length - 1,
+      maxPosition: this.items.length,
     }; 
     this.responsive = responsive;
   }
@@ -58,7 +58,6 @@ class SliderCarousel{
     style.textContent = `
       .carousel-children {
         flex: 0 0 ${this.options.widthSlide}% !important;
-        
       } 
     `
     document.head.appendChild(style);
@@ -72,10 +71,9 @@ class SliderCarousel{
       --this.options.position;
 
       if (this.options.position < 0) {
-        this.options.position = this.options.maxPosition;
+        this.options.position = this.options.maxPosition - this.options.slidesToShow ;
       }
 
-      console.log(this.options.position);
       if (this.dotArray) {
         this.currentDot(this.options.position);
       }
@@ -92,10 +90,9 @@ class SliderCarousel{
     ) {
       ++this.options.position;
 
-      if (this.options.position > this.options.maxPosition) {
+      if (this.options.position > this.options.maxPosition - this.options.slidesToShow) {
         this.options.position = 0;
       }
-      console.log(this.options.position);
       if (this.dotArray) {
         this.currentDot(this.options.position);
       }
@@ -129,7 +126,6 @@ class SliderCarousel{
       this.dotsNav();
     } else {
       this.dots.remove(this.dots)
-      //this.dots.parentElement.removeChild(this.dots)
     }
   }
   dotsNav() {
@@ -156,7 +152,7 @@ class SliderCarousel{
 
   currentSlide(index) {
     this.wrap.style.transform = `translateX(-${
-      index * this.options.widthSlide
+      index * this.options.widthSlide 
     }%)`;
     this.currentDot(index);
   }
@@ -169,10 +165,9 @@ class SliderCarousel{
   }
 
   responsiveInit() {
-    const slidesToShowDefault = this.slidesToShow;
+    const slidesToShowDefault = this.options.slidesToShow;
     const allResponse = this.responsive.map(item => item.breakpoint);
     const maxResponse = Math.max(...allResponse);
-
 
     const checkResponse = () => {
       const widthWindow = document.documentElement.clientWidth;
@@ -180,33 +175,30 @@ class SliderCarousel{
       if (widthWindow < maxResponse) {
         for (let i = 0; i < allResponse.length; i++) {
           if (widthWindow < allResponse[i]) {
-            this.slidesToShow = this.responsive[i].slidesToShow;
-            if (this.options.dots != this.responsive[i].dots) {
-              this.options.dots = this.responsive[i].dots;
-              this.addDots()
+            this.options.slidesToShow = this.responsive[i].options.slidesToShow;
+            if (this.options.dots != this.responsive[i].options.dots) {
+              this.options.dots = this.responsive[i].options.dots;
+              this.addDots();
             }
-            if (this.options.arrows != this.responsive[i].arrows) {
-              this.options.arrows = this.responsive[i].arrows;
+            if (this.options.arrows != this.responsive[i].options.arrows) {
+              this.options.arrows = this.responsive[i].options.arrows;
               this.addArrow();
             }
             
-            this.options.widthSlide = Math.floor(100 / this.slidesToShow);
+            this.options.widthSlide = Math.floor(100 / this.responsive[i].options.slidesToShow);
             this.addStyle();
-            
-          } 
+          }
         }
       } else {
-        this.slidesToShow = slidesToShowDefault;
-        this.options.dots = false;
-        this.options.arrows = false;
-        this.options.widthSlide = Math.floor(100 / this.slidesToShow);
+        this.options.slidesToShow = slidesToShowDefault;
+        this.options.dots = this.options.dots;
+        this.options.arrows = this.options.arrows;
+        this.options.widthSlide = Math.floor(100 / this.options.slidesToShow);
         this.addStyle();
       }
     };
     checkResponse();
-    
     window.addEventListener('resize', checkResponse);
-   
-  }
+  } 
 }
 export default SliderCarousel;

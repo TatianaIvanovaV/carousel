@@ -11,27 +11,35 @@ const opotions = {
   responsive: [
     {
       breakpoint: 1201,
-      slidesToShow: 4,
-      arrows: true,
-      dots: false,
+      options: {
+        slidesToShow: 4,
+        arrows: true,
+        dots: false,
+      }
     },
     {
       breakpoint: 993,
-      slidesToShow: 3,
-      arrows: true,
-      dots: false,
+      options: {
+        slidesToShow: 3,
+        arrows: true,
+        dots: false,
+      }
     },
     {
       breakpoint: 769,
-      slidesToShow: 2,
-      arrows: false,
-      dots: true,
+      options: {
+        slidesToShow: 2,
+        arrows: false,
+        dots: true,
+      }
     },
     {
       breakpoint: 480,
-      slidesToShow: 1,
-      arrows: false,
-      dots: true,
+      options: {
+        slidesToShow: 1,
+        arrows: false,
+        dots: true,
+      } 
     },
   ]    
 }

@@ -120,14 +120,14 @@ h1 {
   background-color: red;
 }
 .carousel-button__prev {
-  left: -32px;
+  left: 32px;
   border-left: 2px solid #A89365;
   border-bottom: 2px solid #A89365;
   transform: rotate(45deg);
 
 }
 .carousel-button__next {
-  right: -32px;
+  right: 32px;
   border-right: 2px solid #A89365;
   border-bottom: 2px solid #A89365;
   transform: rotate(-45deg);
